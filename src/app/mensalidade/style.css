@@ -1,0 +1,30 @@
+.container {
+    display: flex; /* Define o elemento como flexível */
+    justify-content: space-between; /* Espacia os elementos entre eles */
+    text-align: center;
+    /* Outras propriedades podem ser adicionadas para alinhamento vertical, etc. */
+}
+.box {
+    width: 200px; /* Define a largura das caixas (opcional) */
+    height: 300px; /* Define a altura das caixas (opcional) */
+    background-color: #606060; /* Define a cor de fundo das caixas (opcional) */
+    margin: 100px;
+    border-radius: 10px
+}
+
+.button {
+    width: 85px; /* Define a largura das caixas (opcional) */
+    height: 35px; /* Define a altura das caixas (opcional) */
+    background-color: #ff0000; /* Define a cor de fundo das caixas (opcional) */
+    margin: 0 auto;
+    margin-top: 200px;
+    border-radius: 10px;
+}
+
+.mes {
+    margin-top: 20px;
+}
+
+.men {
+    margin-left: 50px;
+}
