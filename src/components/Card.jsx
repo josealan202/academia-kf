@@ -1,19 +1,15 @@
-export default ({titulo}) => (
+export default ({titulo, status}) => (
     <>
-        <div class="box">
-                <div class="mes"> 
+        <div className="box">
+                <div className="mes"> 
                   {titulo}
                </div>
-               <script>
-                function funcaoClicar() {
-                    <p>a</p>
-
-
-
-                }
-               
-               </script>
-                <button class= "button" onclick="funcaoClicar()">Gerar QR Code</button>
+               <div className="status">
+                {status}
+                <br></br>
+                {status === "PENDENTE" && <button className="button">Pagar</button>}
+                
                </div>
+            </div>
     </>
 )
