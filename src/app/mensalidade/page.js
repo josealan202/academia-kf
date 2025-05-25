@@ -6,7 +6,7 @@ export default async () => {
     const mensalidades = await db.query("select * from mensalidade")
  return (<>
     <br></br>
-    <h1 className="men">Mensalidade</h1>
+    <h1 className="men">Mensalidades</h1>
     <br></br>
     <div className="container">
         {
