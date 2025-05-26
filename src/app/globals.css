@@ -1,17 +1,27 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #777777;
+  --foreground: #000000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }
-
 header {
-  background-color: gray;
+  background-color: #000000;
+  word-spacing: 3px;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+
+  padding: 5px;
+  box-sizing: border-box;
+}
+.espacamento-h1 {
+  display: flex;
+  align-items: center;
 }
 
 html,
@@ -37,10 +47,21 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  font-size: 22px;
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
+}
+
+.divespacamentodelinhas {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.titulo {
+  padding-left: 20px;
 }

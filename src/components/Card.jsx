@@ -1,14 +1,19 @@
-export default ({titulo, status}) => (
+import style from "./page.module.css"
+
+export default ({titulo, checkins, valor}) => (
     <>
-        <div className="box">
-                <div className="mes"> 
+        <div className={style.box}>
+                <div className={style.nome}> 
                   {titulo}
                </div>
-               <div className="status">
-                {status}
-                <br></br>
-                {status === "PENDENTE" && <button className="button">Pagar</button>}
-                
+               <div className={style.checkins}>
+                    Quantidade: {checkins} check-ins
+               </div>
+                <div className={style.valor}>
+                    Valor: R$ {valor} reais
+               </div>
+               <div className={style.botao}>
+                    <a href="./planos/pagamento"><button className={style.button}>Pagar</button></a>
                </div>
             </div>
     </>

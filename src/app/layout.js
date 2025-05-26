@@ -20,12 +20,20 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <header>
-          <h1>Academia Gladiadores</h1>
-        </header>
+      <header> 
+          <div className="espacamento-h1">
+            <img src = "tcc-gladiadores.jpeg" height={100} width={100}/>
+            <h1 className="titulo">CT GLADIADORES</h1>
+          </div>
+            
 
+            <div className="divespacamentodelinhas">
+            
+            <a className="espaçamento" href="https://www.google.com/?hl=pt-BR">Página inicial</a> 
+            <a className="espaçamento" href="../planos" style = {{color: 'gray'}}>Planos</a>
         
-        {children}
+            </div>
+        </header>{children}
       </body>
     </html>
   );

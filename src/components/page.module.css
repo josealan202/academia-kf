@@ -1,0 +1,18 @@
+.box {
+    justify-content: space-around;
+    height: 150px; 
+    background-color: #606060; 
+    margin: 100px;
+    border-radius: 10px;
+    padding: 50px;
+    display: flex;
+}
+
+.button {
+    width: 100px; 
+    height: 35px; 
+    background-color: #00000000; 
+    border-radius: 10px;
+}
+
+
