@@ -1,0 +1,58 @@
+.container {
+  background-color: gray;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 700px;
+  max-width: 90vw;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 25px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.pixInfo {
+  margin-bottom: 25px;
+  text-align: left;
+}
+
+.label {
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.pixKeyInput {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #bbb;
+  border-radius: 6px;
+  box-sizing: border-box;
+  cursor: pointer;
+  user-select: all;
+}
+
+.pixQRCode {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #ffffff;
+}
+
+.qrPlaceholder {
+  margin-top: 12px;
+  height: 220px;
+  background-color: #727272;
+  border: 2px dashed #bbb;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-style: italic;
+  user-select: none;
+}

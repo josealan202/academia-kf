@@ -29,10 +29,16 @@ export default function RootLayout({ children }) {
 
             <div className="divespacamentodelinhas">
             
-            <a className="espaçamento" href="https://www.google.com/?hl=pt-BR">Página inicial</a> 
+            <a className="espaçamento" href="../paginainicial">Página inicial</a> 
             <a className="espaçamento" href="../planos" style = {{color: 'gray'}}>Planos</a>
         
             </div>
+            <div className="botao">
+                    <a href="../registro"><button className="button">Registrar</button></a>
+            </div>
+            <div className="botao1">
+                    <a href="../login"><button className="button">Logar</button></a>
+            </div>            
         </header>{children}
       </body>
     </html>

@@ -65,3 +65,13 @@ a {
 .titulo {
   padding-left: 20px;
 }
+
+.button {
+    width: 100px; 
+    height: 35px; 
+    background-color: #00000000; 
+    border-radius: 10px;
+}
+
+
+
