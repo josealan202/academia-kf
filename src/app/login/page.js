@@ -20,7 +20,7 @@ export default function Login() {
                 const senhaInput = document.getElementById("senha");
                 senhaInput.type = senhaInput.type === "password" ? "text" : "password";
             }
-        }>👁️</button>
+        }><img src="olhoSenha.png" height="25px" width="25px" className={style.olhoSenha}></img></button>
             </div>
 
             <label className={style.checkbox}>

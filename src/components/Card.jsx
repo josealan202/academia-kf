@@ -13,7 +13,7 @@ export default ({titulo, checkins, valor}) => (
                     Valor: R$ {valor} reais
                </div>
                <div className={style.botao}>
-                    <a href="./pagamento"><button className={style.button}>Pagar</button></a>
+                    <a href="./formadepagamento"><button className={style.button}>Comprar</button></a>
                </div>
             </div>
     </>
