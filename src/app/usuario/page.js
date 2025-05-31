@@ -1,6 +1,7 @@
 import db from "@/lib/db"
 export default async () => {
-    const usuarios = await db.query("select * from usuario")
+   let plano1 = "('alan', 'branco');"
+    const usuarios = await db.query(`insert into usuario (nome, cor) values ${plano1}`);
  return (<>
     <br></br>
     <h1>Lista de usuários</h1>
