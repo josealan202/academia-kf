@@ -6,6 +6,7 @@ export default function Registro() {
     <>
     <br></br>
     <div className={style.container}>
+      <div>
       <h2 className={style.title}>Registro</h2>
       <form id="registroForm">
         <label className={style.label} htmlFor="nome">Nome:</label>
@@ -66,6 +67,7 @@ export default function Registro() {
 
         <button className={style.button} type="submit">Registrar</button>
       </form>
+    </div>
     </div>
     </>
   );
