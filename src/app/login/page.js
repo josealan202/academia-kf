@@ -31,9 +31,6 @@ export default function Login() {
                 <button type="submit" className={style.button}>Entrar</button>
             </form>
             </div>
-
-            
-
         </body>
     </>
   );
