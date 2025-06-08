@@ -4,23 +4,37 @@ import style from './page.module.css';
 
 import { useState } from 'react'
 
-export default function UserForm({ onAddUser }) {
+export default function onAddUser() {
   const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [sexo, setSexo] = useState('')
   const [periododopagamento, setPeriodoDoPagamento] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    onAddUser({ nome, email, senha, sexo, periododopagamento })
-    setNome('')
-    setEmail('')
-    setSenha('')
-    setSexo('')
-    setPeriodoDoPagamento('')
-  }
+    const user = {nome, email, senha, sexo, periododopagamento}
 
+    try {
+      const response = await fetch('/apiCadastro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+      })
+
+      if (response.ok) {
+        const data = await response.json()
+        const id = data.id
+      } else {
+        const errorData = await response.json()
+        alert(`Erro ao cadastrar cliente: ${errorData.error}`)
+      }
+    } catch (error) {
+      console.error('Erro ao enviar formulário de cadastro:', error)
+      alert('Erro de conexão com o servidor.')
+    }
+  }
+  
   return (
     <>
     <br></br>
@@ -99,3 +113,4 @@ export default function UserForm({ onAddUser }) {
     </>
   )
 }
+
