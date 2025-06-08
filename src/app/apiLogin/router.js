@@ -8,7 +8,7 @@ export async function POST(request) {
     const client = await pool.connect()
     const result = await client.query(
       'SELECT * FROM usuario WHERE email = $1 AND senha = $2',
-      [ email, senha]
+      [email, senha]
     )
 
     const id = result.rows[0].id
