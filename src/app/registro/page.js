@@ -9,7 +9,7 @@ export default function UserForm({ onAddUser }) {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [sexo, setSexo] = useState('')
-  const [periododopagamento, setPeridoDoPagamento] = useState('')
+  const [periododopagamento, setPeriodoDoPagamento] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -18,7 +18,7 @@ export default function UserForm({ onAddUser }) {
     setEmail('')
     setSenha('')
     setSexo('')
-    setPeridoDoPagamento('')
+    setPeriodoDoPagamento('')
   }
 
   return (
@@ -64,28 +64,31 @@ export default function UserForm({ onAddUser }) {
         />
 
         <div className={style.li}> 
-            <li>A senha deve ter no mínimo 4 caracteres e no máximo 8 caracteres.</li>
+            <span>A senha deve ter no mínimo 4 caracteres e no máximo 8 caracteres.</span>
         </div>
         
         <label className={style.label}>Sexo:</label>
-        <input
+        <select
           className={style.input}
-          type="text"
-          id="nome"
-          name="nome"
+          id="sexo"
+          name="sexo"
           value={sexo}
           onChange={(e) => setSexo(e.target.value)}
           required
-        />
+        >
+          <option value="">Selecione</option>
+          <option value="1">Masculino</option>
+          <option value="2">Feminino</option>
+        </select>
 
-        <label className={style.label} htmlFor="pagamento">Momento do pagamento:</label>
+        <label className={style.label} htmlFor="pagamento">Dia do pagamento:</label>
         <input
           className={style.input}
           type="date"
-          id="date"
-          name="date"
+          id="periodopagamento"
+          name="periodopagamento"
           value={periododopagamento}
-          onChange={(e) => setPeridoDoPagamento(e.target.value)}
+          onChange={(e) => setPeriodoDoPagamento(e.target.value)}
           required
         />
 

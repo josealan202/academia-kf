@@ -3,16 +3,16 @@ import pool from "../../lib/db.js";
 
 export async function POST(request) {
   try {
-    const { name, project, startDate } = await request.json()
+    const { nome, email, senha, sexo, periododopagamento} = await request.json()
     const client = await pool.connect()
     await client.query(
-      'INSERT INTO usuario (nome, email, senha, sexo, peridodopagamento) VALUES ($1, $2, $3, $4, $5)',
-      [name, project, startDate]
+      'INSERT INTO usuario (nome, email, senha, sexo, periododopagamento) VALUES ($1, $2, $3, $4, $5)',
+      [nome, email, senha, sexo, periododopagamento]
     )
     client.release()
     return NextResponse.json({ status: 201 })
   } catch (error) {
-    console.error('Error adding aluno:', error)
+    console.error('Error adding usuário:', error)
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 })
   }
 }
