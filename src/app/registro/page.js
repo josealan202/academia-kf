@@ -11,9 +11,12 @@ export default function onAddUser() {
   const [sexo, setSexo] = useState('')
   const [periododopagamento, setPeriodoDoPagamento] = useState('')
 
+  const route = useRouter();
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const user = {nome, email, senha, sexo, periododopagamento}
+
 
     try {
       const response = await fetch('/apiCadastro', {
@@ -25,6 +28,7 @@ export default function onAddUser() {
       if (response.ok) {
         const data = await response.json()
         const id = data.id
+        route.push(`/perfil/${id}`)
       } else {
         const errorData = await response.json()
         alert(`Erro ao cadastrar cliente: ${errorData.error}`)

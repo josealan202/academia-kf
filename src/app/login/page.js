@@ -9,7 +9,7 @@ export default function clienteLogin() {
     const [emailLog, setEmaillog] = useState('')
     const [senhaLog, setSenhalog] = useState('')
 
-    const router = useRouter()
+    const route = useRouter();
 
     const handleLogin = async (e) => {
     e.preventDefault()
@@ -24,7 +24,7 @@ export default function clienteLogin() {
       if (response.ok) {
         const data = await response.json()
         const id = data.id
-        router.push(`/perfil/${id}`)
+        route.push(`/perfil/${id}`)
       } else {
         const errorData = await response.json()
         alert(`Erro ao fazer login: ${errorData.error}`)
@@ -48,12 +48,6 @@ export default function clienteLogin() {
                 <label htmlFor="senha" className={style.label}>Senha:</label>
             <div className={style.senhaContainer}>
                 <input type="password" id="senha" name="senha" className={style.input} value={senhaLog} onChange={(e) => setSenhalog(e.target.value)} required />
-                <button type="button" className={style.verSenha} onClick={
-            function toggleSenha() {
-                const senhaInput = document.getElementById("senha");
-                senhaInput.type = senhaInput.type === "password" ? "text" : "password";
-            }
-        }><img src="olhoSenha.png" height="25px" width="25px" className={style.olhoSenha}></img></button>
             </div>
             <div>
                 <Link href="#"><p>Esqueceu sua senha?</p></Link>
@@ -64,7 +58,15 @@ export default function clienteLogin() {
                 Salvar senha
             </label>
 
-                <button type="submit" className={style.button}>Entrar</button>
+              <button type="submit" className={style.button}>Entrar</button>
+
+            <div className={style.rightContainer}>
+              <img
+                src="/ivafundo.jpg"
+                alt="Imagem decorativa"
+                className={style.loginImage}
+            />
+            </div>
             </form>
             </div>
         </body>

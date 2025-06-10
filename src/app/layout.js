@@ -29,7 +29,7 @@ export default function RootLayout({ children }) {
 
             <div className="divespacamentodelinhas">
             
-            <a className="espaçamento" href="../paginainicial">Página inicial</a> 
+            <a className="espaçamento" href="http://localhost:3000/">Página inicial</a> 
             <a className="espaçamento" href="../planos">Planos</a>
         
             </div>

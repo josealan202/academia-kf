@@ -1,14 +1,13 @@
 import { NextResponse } from 'next/server'
-import pool from "../lib/db"
-
+import pool from "../../lib/db.js"
 
 export async function POST(request) {
   try {
-    const { email, senha } = await request.json()
+    const { emailLog, senhaLog } = await request.json()
     const client = await pool.connect()
     const result = await client.query(
       'SELECT * FROM usuario WHERE email = $1 AND senha = $2',
-      [email, senha]
+      [emailLog, senhaLog]
     )
 
     const id = result.rows[0].id
