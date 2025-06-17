@@ -1,19 +1,18 @@
 'use client'
-import style from './page.module.css';
+import style from './page.module.css'
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 
-export default function clienteLogin() {
-    const [emailLog, setEmaillog] = useState('')
-    const [senhaLog, setSenhalog] = useState('')
+export default function ClienteLogin() {
+  const [emailLog, setEmaillog] = useState('')
+  const [senhaLog, setSenhalog] = useState('')
 
-    const route = useRouter();
+  const route = useRouter()
 
-    const handleLogin = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault()
-
     try {
       const response = await fetch('/apiLogin', {
         method: 'POST',
@@ -36,40 +35,56 @@ export default function clienteLogin() {
   }
 
   return (
-    <>
-        <br></br>
-        <body>
-            <div className={style.container}>
-            <h2 className={style.title}>Login</h2>
-            <form onSubmit={handleLogin}>
-                <label htmlFor="email" className={style.label}>Email:</label>
-                <input type="email" id="email" name="email" className={style.input} value={emailLog} onChange={(e) => setEmaillog(e.target.value)} required />
+    <div className={style.container}>
+      <div className={style.leftContainer}>
+        <div className={style.loginBox}>
+          <h2 className={style.title}>Login</h2>
+          <form onSubmit={handleLogin}>
+            <label htmlFor="email" className={style.label}>Email:</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              className={style.input}
+              value={emailLog}
+              onChange={(e) => setEmaillog(e.target.value)}
+              required
+            />
 
-                <label htmlFor="senha" className={style.label}>Senha:</label>
+            <label htmlFor="senha" className={style.label}>Senha:</label>
             <div className={style.senhaContainer}>
-                <input type="password" id="senha" name="senha" className={style.input} value={senhaLog} onChange={(e) => setSenhalog(e.target.value)} required />
+              <input
+                type="password"
+                id="senha"
+                name="senha"
+                className={style.input}
+                value={senhaLog}
+                onChange={(e) => setSenhalog(e.target.value)}
+                required
+              />
             </div>
+
             <div>
-                <Link href="#"><p>Esqueceu sua senha?</p></Link>
+              <Link href="#"><p>Esqueceu sua senha?</p></Link>
             </div>
 
             <label className={style.checkbox}>
-            <input type="checkbox" id="salvarSenha" name="salvarSenha" />
-                Salvar senha
+              <input type="checkbox" id="salvarSenha" name="salvarSenha" />
+              Salvar senha
             </label>
 
-              <button type="submit" className={style.button}>Entrar</button>
+            <button type="submit" className={style.button}>Entrar</button>
+          </form>
+        </div>
+      </div>
 
-            <div className={style.rightContainer}>
-              <img
-                src="/ivafundo.jpg"
-                alt="Imagem decorativa"
-                className={style.loginImage}
-            />
-            </div>
-            </form>
-            </div>
-        </body>
-    </>
-  );
+      <div className={style.rightContainer}>
+        <img
+          src="/ivafundo.jpg"
+          alt="Imagem decorativa"
+          className={style.loginImage}
+        />
+      </div>
+    </div>
+  )
 }

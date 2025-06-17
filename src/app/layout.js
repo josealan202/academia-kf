@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
       <header> 
           <div className="espacamento-h1">
-            <img src = "tcc-gladiadores.jpeg" height={100} width={100}/>
+            <img src="/tcc-gladiadores.jpeg" height={100} width={100}/>
             <h1 className="titulo">CT GLADIADORES</h1>
           </div>
             

@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 import style from './page.module.css';
-
+import { useRouter } from 'next/navigation';
 import { useState } from 'react'
 
 export default function onAddUser() {
@@ -28,7 +28,7 @@ export default function onAddUser() {
       if (response.ok) {
         const data = await response.json()
         const id = data.id
-        route.push(`/perfil/${id}`)
+        route.push('/login')
       } else {
         const errorData = await response.json()
         alert(`Erro ao cadastrar cliente: ${errorData.error}`)
@@ -94,7 +94,7 @@ export default function onAddUser() {
           onChange={(e) => setSexo(e.target.value)}
           required
         >
-          <option value="">Selecione</option>
+          
           <option value="1">Masculino</option>
           <option value="2">Feminino</option>
         </select>
