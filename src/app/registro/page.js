@@ -4,7 +4,7 @@ import style from './page.module.css';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react'
 
-export default function onAddUser() {
+export default function OnAddUser() {
   const [nome, setNome] = useState('')
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
@@ -17,9 +17,9 @@ export default function onAddUser() {
     e.preventDefault()
     const user = {nome, email, senha, sexo, periododopagamento}
 
-
+    console.log(user)
     try {
-      const response = await fetch('/apiCadastro', {
+      const response = await fetch('/api/cadastro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
@@ -94,9 +94,9 @@ export default function onAddUser() {
           onChange={(e) => setSexo(e.target.value)}
           required
         >
-          
-          <option value="1">Masculino</option>
-          <option value="2">Feminino</option>
+          <option value="">Selecione...</option>
+          <option value="Masculino">Masculino</option>
+          <option value="Feminino">Feminino</option>
         </select>
 
         <label className={style.label} htmlFor="pagamento">Dia do pagamento:</label>

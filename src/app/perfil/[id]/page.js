@@ -2,14 +2,8 @@ import db from "../../../lib/db.js";
 import style from "./page.module.css";
 
 export default async ({ params }) => {
-  const usuario = await db.query("select * from usuario where id = " + params.id);
-
-  const sexoFormatado =
-    String(usuario.rows[0].sexo) === "1"
-      ? "Masculino"
-      : String(usuario.rows[0].sexo) === "2"
-      ? "Feminino"
-      : "";
+  const {id} = await params;
+  const usuario = await db.query("select * from usuario where id = " + id);
 
   const dataFormatada = usuario.rows[0].periododopagamento.toLocaleDateString('pt-BR');
 
@@ -35,7 +29,7 @@ export default async ({ params }) => {
             </div>
             <div className={style.infoItem}>
               <strong>Sexo:</strong>
-              <span>{sexoFormatado}</span>
+              <span>{usuario.rows[0].sexo}</span>
             </div>
             <div className={style.infoItem}>
               <strong>Período do pagamento:</strong>

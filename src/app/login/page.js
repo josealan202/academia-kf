@@ -14,7 +14,7 @@ export default function ClienteLogin() {
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch('/apiLogin', {
+      const response = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ emailLog, senhaLog })
