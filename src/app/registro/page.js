@@ -94,21 +94,25 @@ export default function OnAddUser() {
           onChange={(e) => setSexo(e.target.value)}
           required
         >
-          <option value="">Selecione...</option>
+          <option value="" disabled>Selecione...</option>
           <option value="Masculino">Masculino</option>
           <option value="Feminino">Feminino</option>
         </select>
 
         <label className={style.label} htmlFor="pagamento">Dia do pagamento:</label>
-        <input
+        <select
           className={style.input}
-          type="date"
-          id="periodopagamento"
-          name="periodopagamento"
+          id="periododopagamento"
+          name="periododopagamento"
           value={periododopagamento}
           onChange={(e) => setPeriodoDoPagamento(e.target.value)}
           required
-        />
+        >
+          <option value="" disabled>Selecione as datas...</option>
+          <option value="1 a 10">1 a 10</option>
+          <option value="11 a 20">11 a 20</option>
+          <option value="21 a 30/31">21 a 30/31</option>
+        </select>
 
         <button className={style.button} type="submit">Registrar</button>
       </form>

@@ -3,11 +3,11 @@ import pool from "@/lib/db";
 
 export async function POST(request) {
   try {
-    const {nome, checkins, valor} = await request.json()
+    const {quantvezesnasemana, checkins, valor} = await request.json()
     const client = await pool.connect()
     await client.query(
-      'INSERT INTO planos (nome, checkins, valor) VALUES ($1, $2, $3)',
-      [nome, checkins, valor]
+      'INSERT INTO plano (quantvezesnasemana, checkins, valor) VALUES ($1, $2, $3)',
+      [quantvezesnasemana, checkins, valor]
     )
     client.release()
     return NextResponse.json({ status: 201 })

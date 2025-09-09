@@ -5,8 +5,6 @@ export default async ({ params }) => {
   const {id} = await params;
   const usuario = await db.query("select * from usuario where id = " + id);
 
-  const dataFormatada = usuario.rows[0].periododopagamento.toLocaleDateString('pt-BR');
-
   return (
     <div className={style.pageContainer}>
       <div className={style.profileBox}>
@@ -33,7 +31,7 @@ export default async ({ params }) => {
             </div>
             <div className={style.infoItem}>
               <strong>Período do pagamento:</strong>
-              <span>{dataFormatada}</span>
+              <span>Dias {usuario.rows[0].periododopagamento}</span>
             </div>
           </div>
           <button className={style.button}>Editar Perfil</button>

@@ -3,13 +3,13 @@ import Card from "@/components/Card";
 import style from "./page.module.css"
 
 export default async () => {
-    const planos = await db.query("select * from planos")
+    const plano = await db.query("select * from plano")
  return (<>
     <br></br>
-    <h1 className={style.planos}>Escolha um plano</h1>
+    <h1 className={style.plano}>Escolha um plano</h1>
     <div className={style.container}>
         {
-        planos.rows.map( 
+        plano.rows.map( 
             u => (
                <Card key={u.id} titulo={u.nome} checkins={u.checkins} valor={u.valor}/>
             )
