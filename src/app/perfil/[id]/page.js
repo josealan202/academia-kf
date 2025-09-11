@@ -31,7 +31,7 @@ export default async ({ params }) => {
             </div>
             <div className={style.infoItem}>
               <strong>Período do pagamento:</strong>
-              <span>Dias {usuario.rows[0].periododopagamento}</span>
+              <span>Do dia {usuario.rows[0].periododopagamento}</span>
             </div>
           </div>
           <button className={style.button}>Editar Perfil</button>

@@ -3,10 +3,10 @@ import pool from "@/lib/db";
 
 export async function PUT(request) {
   try {
-    const { id, nome, horario } = await request.json();
+    const { id, nome, horario, turno } = await request.json();
 
     
-    if (!id || !nome || !checkins || !valor) {
+    if (!id || !nome || !horario || !turno) {
       return NextResponse.json(
         { error: 'Todos os campos são obrigatórios' },
         { status: 400 }
@@ -16,11 +16,11 @@ export async function PUT(request) {
     const client = await pool.connect();
 
     const result = await client.query(
-      `UPDATE planos 
-       SET nome = $1, checkins = $2, valor = $3 
+      `UPDATE turma 
+       SET nome = $1, horario = $2, turno = $3 
        WHERE id = $4 
        RETURNING *`,
-      [nome, checkins, valor, id]
+      [nome, horario, turno, id]
     );
 
     client.release();
