@@ -99,7 +99,7 @@ export default function OnAddUser() {
           <option value="Feminino">Feminino</option>
         </select>
 
-        <label className={style.label} htmlFor="pagamento">Dia do pagamento:</label>
+        <label className={style.label} htmlFor="pagamento">Período do pagamento:</label>
         <select
           className={style.input}
           id="periododopagamento"

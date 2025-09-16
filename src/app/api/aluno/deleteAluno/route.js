@@ -11,12 +11,12 @@ export async function DELETE(request) {
     }
 
     const client = await pool.connect();
-    await client.query('DELETE FROM turma WHERE id = $1', [id]);
+    await client.query('DELETE FROM usuario WHERE id = $1', [id]);
     client.release();
 
-    return NextResponse.json({ message: 'Turma deletada com sucesso' }, { status: 200 });
+    return NextResponse.json({ message: 'Usuário deletado com sucesso' }, { status: 200 });
   } catch (error) {
-    console.error('Erro ao deletar turma:', error);
+    console.error('Erro ao deletar usuário:', error);
     return NextResponse.json({ error: 'Erro interno no servidor' }, { status: 500 });
   }
 }

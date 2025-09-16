@@ -31,6 +31,7 @@ export default function RootLayout({ children }) {
             
             <a className="espaçamento" href="http://localhost:3000/">Página inicial</a> 
             <a className="espaçamento" href="../planos">Planos</a>
+            <a className="espaçamento" href="../turmas">Turmas</a>
         
             </div>
             <div className="botao">
