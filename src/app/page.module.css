@@ -1,37 +1,69 @@
 .content {
   display: flex;
-  align-items: center;  /* centraliza verticalmente texto e imagem */
-  justify-content: space-between; /* espaço entre os dois lados */
-  padding: 50px;
-  gap: 10px; /* espaçamento entre os blocos */
-  font-size: 30px;
-  height: 900px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem; 
+  padding: 6rem 4rem; 
+  min-height: calc(100vh - 45px); 
+  width: 100%;
+  max-width: 1400px; 
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-/* Controle a largura do texto e da imagem para não ficarem esticados demais */
 .left {
-  flex: 20; /* ocupa espaço proporcional */
-  max-width: 50%; /* opcional pra limitar */
+  flex: 1;
+  max-width: 700px; 
+}
+
+.centroh2 {
+  font-size: 3.5rem; 
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.5rem; 
+  line-height: 1.1; 
+  white-space: nowrap; 
+}
+
+.centrop {
+  font-size: 1.4rem; 
+  line-height: 1.7; 
+  color: #ccc;
+  margin-bottom: 3rem; 
 }
 
 .right {
   flex: 1;
-  max-width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Remova float da imagem */
 .centroimg {
-  width: 100%;  /* pra imagem ocupar todo o container direito */
-  height: auto; /* manter proporção */
-  /* float: right; <- remover */
-  display: block; /* para evitar espaçamento em imagens inline */
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
 }
 
-.centroh2 {
-  font-size: 55px;
-}
+/* --- Responsividade --- */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    text-align: center;
+    padding: 4rem 1.5rem; 
+    min-height: calc(100vh - 50px);
+  }
 
-.centrop {
-  font-size: 35px;
-  color: gray;
+  .left, .right {
+    max-width: 100%;
+  }
+
+  .centroh2 {
+    font-size: 2.5rem; 
+    white-space: normal; 
+  }
+
+  .centrop {
+    font-size: 1.1rem; 
+  }
 }

@@ -5,66 +5,178 @@ html, body {
 }
 
 .container {
-  background-color: gray;
-  padding: 30px 40px;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  width: 500px; 
-  max-width: 90vw;
   display: flex;
-  justify-content: space-between;
-  margin: auto;
+  height: 100vh;
+  width: 100vw;
 }
 
+.leftContainer {
+  width: 50%;
+  display: flex;
+  align-items: flex-start; /* Alinha o conteúdo ao topo */
+  justify-content: center;
+  background-color: #1c1c1c;
+  padding: 10vh 50px 0; /* Adiciona padding superior para dar espaço do topo */
+}
+
+.signInBox {
+  background-color: #1c1c1c;
+  width: 100%;
+  max-width: 450px;
+  padding: 0; /* Padding interno removido/zerado */
+  border-radius: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  /* Removido justify-content: center; */
+  box-sizing: border-box;
+}
 
 .title {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   color: #ffffff;
   font-weight: 700;
+  font-size: 32px;
+  letter-spacing: 1px;
 }
 
 .label {
   display: block;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  margin-top: 20px;
+  margin-bottom: 8px;
   color: #ffffff;
   font-weight: 600;
+  font-size: 16px;
 }
 
-.input,
-.select {
+.input {
   width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #bbb;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 14px;
+  padding: 12px 15px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #2a2a2a;
+  color: #ffffff;
+  transition: border-color 0.3s;
 }
 
-.sexoOpcoes {
+.input:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+.formControls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.signInBox form > div a p {
+    color: #007BFF !important; 
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.forgotPassword {
+    color: #007BFF !important; 
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.checkbox {
   display: flex;
-  gap: 10px;
-  margin-top: 5px;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
+  font-size: 14px;
+  color: #ffffff;
 }
-
-.sexoLabel {
-  font-weight: normal;
+.checkbox input[type="checkbox"] {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    background-color: #2a2a2a;
+    cursor: pointer;
+    position: relative;
+    top: 0;
 }
 
 .button {
   width: 100%;
-  padding: 10px 0;
-  margin-top: 25px;
+  padding: 14px 0;
+  margin-top: 30px;
   background-color: #007BFF;
   border: none;
   border-radius: 5px;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 700;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
 .button:hover {
   background-color: #0056b3;
+}
+
+.rightContainer {
+  width: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.signInImage {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  filter: brightness(0.5);
+}
+
+.rightContainer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    #1c1c1c 0%, 
+    rgba(28, 28, 28, 0.8) 15%,
+    transparent 60%
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+  .leftContainer, .rightContainer {
+    width: 100%;
+    height: auto;
+    min-height: 50vh; 
+  }
+  .leftContainer {
+    padding: 30px 20px;
+  }
+  .signInBox {
+    padding: 0;
+    max-width: 100%;
+  }
+  .signInImage {
+    height: 300px;
+  }
+  .rightContainer::before {
+    background: none; 
+  }
 }

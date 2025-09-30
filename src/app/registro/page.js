@@ -40,85 +40,88 @@ export default function OnAddUser() {
   }
   
   return (
-    <>
-    <br></br>
-    <div className={style.container}>
-      <div>
-      <h2 className={style.title}>Registro</h2>
-      <form id="registroForm" onSubmit={handleSubmit}>
-        <label className={style.label} htmlFor="nome">Nome:</label>
-        <input
-          className={style.input}
-          type="text"
-          id="nome"
-          name="nome"
-          value={nome}
-          onChange={(e) => setNome(e.target.value)}
-          required
-        />
+  <div className={style.container}>
+    <div className={style.leftContainer}>
+      <div className={style.signInBox}> 
+        <h2 className={style.title}>Registro</h2>
+        <form id="registroForm" onSubmit={handleSubmit}>
+          
+          <label className={style.label} htmlFor="nome">Nome:</label>
+          <input
+            className={style.input}
+            type="text"
+            id="nome"
+            name="nome"
+            value={nome}
+            onChange={(e) => setNome(e.target.value)}
+            required
+          />
 
-        <label className={style.label} htmlFor="email">Email:</label>
-        <input
-          className={style.input}
-          type="email"
-          id="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
+          <label className={style.label} htmlFor="email">Email:</label>
+          <input
+            className={style.input}
+            type="email"
+            id="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
 
-        <label className={style.label} htmlFor="senha">Senha:</label>
-        <input
-          className={style.input}
-          type="password"
-          id="senha"
-          name="senha"
-          minLength={4}
-          maxLength={8}
-          value={senha}
-          onChange={(e) => setSenha(e.target.value)}
-          required
-        />
+          <label className={style.label} htmlFor="senha">Senha:</label>
+          <input
+            className={style.input}
+            type="password"
+            id="senha"
+            name="senha"
+            minLength={4}
+            maxLength={8}
+            value={senha}
+            onChange={(e) => setSenha(e.target.value)}
+            required
+          />
 
-        <div className={style.li}> 
-            <span>A senha deve ter no mínimo 4 caracteres e no máximo 8 caracteres.</span>
-        </div>
-        
-        <label className={style.label}>Sexo:</label>
-        <select
-          className={style.input}
-          id="sexo"
-          name="sexo"
-          value={sexo}
-          onChange={(e) => setSexo(e.target.value)}
-          required
-        >
-          <option value="" disabled>Selecione...</option>
-          <option value="Masculino">Masculino</option>
-          <option value="Feminino">Feminino</option>
-        </select>
+          <label className={style.label}>Sexo:</label>
+          <select
+            className={style.input} // Usando .input para o select também
+            id="sexo"
+            name="sexo"
+            value={sexo}
+            onChange={(e) => setSexo(e.target.value)}
+            required
+          >
+            <option value="" disabled>Selecione...</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Feminino">Feminino</option>
+          </select>
 
-        <label className={style.label} htmlFor="pagamento">Período do pagamento:</label>
-        <select
-          className={style.input}
-          id="periododopagamento"
-          name="periododopagamento"
-          value={periododopagamento}
-          onChange={(e) => setPeriodoDoPagamento(e.target.value)}
-          required
-        >
-          <option value="" disabled>Selecione as datas...</option>
-          <option value="1 a 10">1 a 10</option>
-          <option value="11 a 20">11 a 20</option>
-          <option value="21 a 30/31">21 a 30/31</option>
-        </select>
+          <label className={style.label} htmlFor="pagamento">Período do pagamento:</label>
+          <select
+            className={style.input} // Usando .input para o select também
+            id="periododopagamento"
+            name="periododopagamento"
+            value={periododopagamento}
+            onChange={(e) => setPeriodoDoPagamento(e.target.value)}
+            required
+          >
+            <option value="" disabled>Selecione as datas...</option>
+            <option value="Do dia 1 a 10">Do dia 1 a 10</option>
+            <option value="Do dia 11 a 20"> Do dia 11 a 20</option>
+            <option value="Do dia 21 a 30/31">Do dia 21 a 30/31</option>
+          </select>
 
-        <button className={style.button} type="submit">Registrar</button>
-      </form>
+          <button className={style.button} type="submit">Registrar</button>
+        </form>
+      </div>
     </div>
+
+    <div className={style.rightContainer}>
+      <img
+        src="/ivafundo2.jpeg"
+        alt="Imagem decorativa"
+        className={style.signInImage}
+      />
     </div>
-    </>
-  )
+  </div>
+);
 }
-
