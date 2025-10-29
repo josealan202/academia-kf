@@ -3,36 +3,38 @@ import style from './page.module.css'
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { signIn, useSession } from "next-auth/react";
 
 
 export default function ClienteLogin() {
   const [emailLog, setEmaillog] = useState('')
   const [senhaLog, setSenhalog] = useState('')
 
-  const route = useRouter()
+  const router = useRouter()
+
+  const { data: session } = useSession();
+
+  if (session) {
+    router.replace("/perfil");
+    return null;
+  }
 
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ emailLog, senhaLog })
-      })
-
-      if (response.ok) {
-        const data = await response.json()
-        const id = data.id
-        route.push(`/perfil/${id}`)
-      } else {
-        const errorData = await response.json()
-        alert(`Erro ao fazer login: ${errorData.error}`)
+    const res = await signIn("credentials", {
+        redirect: false,
+        email: emailLog,
+        senha: senhaLog
+      });
+        if (res?.ok) router.push("/perfil");
+          else alert("Email e senha inválidos");
+      } catch (error) {
+        console.error(error)
+        alert('Erro de conexão')
       }
-    } catch (error) {
-      console.error('Erro ao fazer login:', error)
-      alert('Erro de conexão com o servidor.')
-    }
-  }
+    }      
+  
 
   return (
     <div className={style.container}>
@@ -72,6 +74,10 @@ export default function ClienteLogin() {
               <input type="checkbox" id="salvarSenha" name="salvarSenha" />
               Salvar senha
             </label>
+
+            <button onClick={() => signIn("google")} className={style.btn}>
+              Continuar com o Google
+            </button>
 
             <button type="submit" className={style.button}>Entrar</button>
           </form>
