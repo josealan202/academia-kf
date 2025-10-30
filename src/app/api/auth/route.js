@@ -33,7 +33,7 @@ const authOptions = {
             async authorize(credentials) {
                 const { email, senha } = credentials;
                 const user = await getUserByEmail(email);
-                if (!user || !user.senha_hash) return null;
+                if (!user || !user.senha) return null;
                 const ok = await compare(senha, user.senha);
                 if (!ok) return null;
                 // O objeto que for retornado vai para o token/session
