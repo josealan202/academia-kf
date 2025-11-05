@@ -41,23 +41,17 @@ export default async ({ params }) => {
 };
 */
 
-'use client'
-
-import { useAuth } from '../context/AuthContext'
 import style from "./page.module.css"
-import { useEffect } from 'react'
+import { getServerSession } from "next-auth"
+import { authOptions } from "@/app/api/auth/[...nextauth]/route.js";
 
 
-export default function Perfil() {
-  const { usuarioLogado } = useAuth()
+export default async function Perfil({params}) {
 
-  useEffect(() => {
-    if (!usuarioLogado?.id) return;
-  }, [usuarioLogado]);
-
-
-  if (!usuarioLogado) return <p>Você não está logado</p>
-  }
+  const {id} = await params;
+  const sessao = await getServerSession(authOptions)
+  const user = sessao.user;
+  console.log(JSON.stringify(user))
 
 
   return (
@@ -70,23 +64,23 @@ export default function Perfil() {
           <div className={style.info}>
             <div className={style.infoItem}>
               <strong>Nome:</strong>
-              <span>{usuario.rows[0].nome}</span>
+              <span>{user.nome}</span>
             </div>
             <div className={style.infoItem}>
               <strong>Email:</strong>
-              <span>{usuario.rows[0].email}</span>
+              <span>{user.email}</span>
             </div>
             <div className={style.infoItem}>
               <strong>Senha:</strong>
-              <span>{usuario.rows[0].senha}</span>
+              <span>{user.senha}</span>
             </div>
             <div className={style.infoItem}>
               <strong>Sexo:</strong>
-              <span>{usuario.rows[0].sexo}</span>
+              <span>{user.sexo}</span>
             </div>
             <div className={style.infoItem}>
               <strong>Período do pagamento:</strong>
-              <span>Do dia {usuario.rows[0].periododopagamento}</span>
+              <span>Do dia {user.periododopagamento}</span>
             </div>
           </div>
           <button className={style.button}>Editar Perfil</button>
@@ -94,4 +88,4 @@ export default function Perfil() {
       </div>
     </div>
   );
-
+}

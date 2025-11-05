@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { signIn, useSession } from "next-auth/react";
+import { useEffect } from 'react'
 
 
 export default function ClienteLogin() {
@@ -14,27 +15,30 @@ export default function ClienteLogin() {
 
   const { data: session } = useSession();
 
-  if (session) {
-    router.replace("/perfil");
-    return null;
-  }
+  useEffect(() => {
+    if (session?.user) {
+      router.replace("/perfil");
+      return null;
+    }
+  }, [session])
+
 
   const handleLogin = async (e) => {
     e.preventDefault()
     try {
-    const res = await signIn("credentials", {
+      const res = await signIn("credentials", {
         redirect: false,
-        email: emailLog,
-        senha: senhaLog
+        emailLog,
+        senhaLog
       });
-        if (res?.ok) router.push("/perfil");
-          else alert("Email e senha inválidos");
-      } catch (error) {
-        console.error(error)
-        alert('Erro de conexão')
-      }
-    }      
-  
+      if (res?.ok) router.push("/perfil");
+      else alert("Email e senha inválidos");
+    } catch (error) {
+      console.error(error)
+      alert('Erro de conexão')
+    }
+  }
+
 
   return (
     <div className={style.container}>

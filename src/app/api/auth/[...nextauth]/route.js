@@ -8,7 +8,7 @@ import pool from "@/lib/db";
 async function getUserByEmail(email) {
     const client = await pool.connect();
     const res = await client.query(
-        "SELECT id, nome, email, senha, sexo, periododopagamento, id_turma role FROM usuario WHERE email = $1",
+        "SELECT id, nome, email, senha, sexo, periododopagamento, role FROM usuario WHERE email = $1",
         [email]
     );
     client.release();
@@ -19,7 +19,7 @@ async function getUserByEmail(email) {
 
 const authOptions = {
     session: { strategy: "jwt" },
-    providers: [ // Trata-se de como o usuário pode entrar (Google, Facebook, e-mail/senha, enre outros).
+    providers: [ // Trata-se de como o usuário pode entrar (Google, Facebook, e-mail/senha, entre outros).
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET
@@ -37,7 +37,7 @@ const authOptions = {
                 const ok = await compare(senha, user.senha);
                 if (!ok) return null;
                 // O objeto que for retornado vai para o token/session
-                return { id: user.id, name: user.nome, email: user.email, role: user.role };
+                return { id: user.id, name: user.nome, email: user.email, senha: user.senha, sexo: user.sexo, periododopagamento: user.periododopagamento, role: user.role };
             }
         })
     ],
@@ -57,6 +57,9 @@ const authOptions = {
                     token.role = existing.role;
                     token.id = existing.id;
                     token.name = existing.nome;
+                    token.email = existing.email;
+                    token.sexo = existing.sexo;
+                    token.periododopagamento = existing.periododopagamento;
                 } else {
                     // Exemplo: cria como "cliente"
                     const client = await pool.connect();
@@ -66,7 +69,11 @@ const authOptions = {
                     );
                     client.release();
                     token.id = res.rows[0].id;
-                    token.role = res.rows[0].role;       
+                    token.role = res.rows[0].role;
+                    token.name = res.rows[0].nome;
+                    token.email = res.rows[0].email;
+                    token.sexo = res.rows[0].sexo;
+                    token.periododopagamento = res.rows[0].periododopagamento; 
                 }
             }
 
@@ -74,6 +81,9 @@ const authOptions = {
                 token.id = user.id;
                 token.role = user.role;
                 token.name = user.name;
+                token.email = user.email;
+                token.sexo = user.sexo;
+                token.periododopagamento = user.periododopagamento;
             }
             return token;
         },
@@ -83,6 +93,9 @@ const authOptions = {
                 session.user.id = token.id;
                 session.user.role = token.role;
                 session.user.name = token.name ?? session.user.name;
+                session.user.email = token.email;
+                session.user.sexo = token.sexo;
+                session.user.periododopagamento = token.periododopagamento;
             }
             return session;
         }
