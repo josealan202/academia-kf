@@ -16,7 +16,6 @@ async function getUserByEmail(email) {
 }
 
 //Criaremos a sessão que será um JWT assinado e que será guardado em cookie httpOnly
-
 const authOptions = {
     session: { strategy: "jwt" },
     providers: [ // Trata-se de como o usuário pode entrar (Google, Facebook, e-mail/senha, entre outros).
@@ -27,8 +26,8 @@ const authOptions = {
         CredentialsProvider({
             name: "Credenciais",
             credentials: {
-                email: { label: "E-mail", type: "email" },
-                senha: { label: "Senha", type: "password" }
+                email: { label: "email", type: "email" },
+                senha: { label: "senha", type: "password" }
             },
             async authorize(credentials) {
                 const { email, senha } = credentials;
@@ -73,7 +72,7 @@ const authOptions = {
                     token.name = res.rows[0].nome;
                     token.email = res.rows[0].email;
                     token.sexo = res.rows[0].sexo;
-                    token.periododopagamento = res.rows[0].periododopagamento; 
+                    token.periododopagamento = res.rows[0].periododopagamento;
                 }
             }
 

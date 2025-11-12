@@ -3,7 +3,7 @@ import style from './page.module.css'
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { signIn, useSession } from "next-auth/react";
+import { getSession, signIn, useSession } from "next-auth/react";
 import { useEffect } from 'react'
 
 
@@ -14,6 +14,9 @@ export default function ClienteLogin() {
   const router = useRouter()
 
   const { data: session } = useSession();
+
+  console.log(session)
+
 
   useEffect(() => {
     if (session?.user) {
@@ -28,10 +31,15 @@ export default function ClienteLogin() {
     try {
       const res = await signIn("credentials", {
         redirect: false,
-        emailLog,
-        senhaLog
+        email: emailLog,
+        senha: senhaLog
       });
-      if (res?.ok) router.push("/perfil");
+      if (res?.ok) {
+        const sessaoAtualizada = await getSession();
+        if(sessaoAtualizada?.user?.id)
+        router.push(`/perfil/${session.user.id}`);
+      }
+      
       else alert("Email e senha inválidos");
     } catch (error) {
       console.error(error)
