@@ -10,20 +10,22 @@
   }
 }
 
+/* HEADER */
 header {
-  background-color: #000000;
-  word-spacing: 3px;
+  background-color: #000;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Distribui o espaço entre logo e menu */
-  gap: 15px; /* Diminuí o gap entre os itens no header */
-  padding: 5px 15px; /* Reduzi o padding para tornar o header mais compacto */
+  justify-content: space-between;
+  padding: 5px 15px;
+  gap: 5px;
   box-sizing: border-box;
 }
 
-.espacamento-h1 {
+/* ----- ALTERADO: deixar o menu mais distante do logo ----- */
+header .espacamento-h1 {
   display: flex;
   align-items: center;
+  margin-right: 40px;
 }
 
 html,
@@ -46,6 +48,7 @@ body {
   margin: 0;
 }
 
+/* Links */
 a {
   display: inline-block;
   color: inherit;
@@ -56,22 +59,173 @@ a {
 }
 
 a:hover {
-  color: gray; /* destaque */
+  color: gray;
 }
 
 .titulo {
   padding-left: 20px;
 }
 
-/* Botões */
+/* Botões padrão */
 .button {
-  width: 100px; 
-  height: 35px; 
-  background-color: gray; 
+  width: 100px;
+  height: 35px;
+  background-color: gray;
   border-radius: 10px;
 }
 
-/* Footer */
+/* ---------------------- MENU DESKTOP ---------------------- */
+@media (min-width: 769px) {
+
+  .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 60px;
+    width: 100%;
+    padding: 50px
+  }
+
+  .menu-left {
+    display: flex;
+    gap: 8px;
+  }
+
+  .menu-right {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .menu-right a,
+  .menu-right button {
+    font-size: 15px;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .menu-right button {
+    background-color: #333;
+    color: white;
+  }
+
+  .menu-right button:hover {
+    background-color: #555;
+  }
+
+  .hamburguer {
+    display: none;
+  }
+
+  /* ---------------- BOTÕES PERSONALIZADOS ---------------- */
+
+  /* estilo base */
+  .botao1,
+  .botao2,
+  .botao3 {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 3px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    background-color: #222;
+    color: white;
+  }
+
+  .botao1:hover,
+  .botao2:hover,
+  .botao3:hover {
+    background-color: #444;
+    transform: translateY(-2px);
+  }
+
+  /* Registro (azul) */
+  .botao1 {
+    background-color: gray;
+  }
+  .botao1:hover {
+    background-color: gray;
+  }
+
+  /* Sair (vermelho) */
+  .botao2 {
+    background-color: gray;
+  }
+  .botao2:hover {
+    background-color: gray;
+  }
+
+  /* Login (verde) */
+  .botao3 {
+    background-color: gray;
+  }
+  .botao3:hover {
+    background-color: gray;
+  }
+}
+
+/* ---------------------- MENU MOBILE ---------------------- */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .menu.open {
+    display: flex;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    width: 200px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .menu a,
+  .menu button {
+    display: block;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+
+  .menu button {
+    background-color: #555;
+    border-radius: 5px;
+  }
+
+  .menu button:hover,
+  .menu a:hover {
+    background-color: #444;
+  }
+
+  .hamburguer {
+    display: block;
+    font-size: 26px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+/* ---------------------- FOOTER ---------------------- */
 .footer {
   background-color: #111;
   color: #fff;
@@ -92,7 +246,8 @@ a:hover {
   flex: 1 1 200px;
 }
 
-.footer-section h3, .footer-section h4 {
+.footer-section h3,
+.footer-section h4 {
   margin-bottom: 15px;
 }
 
@@ -118,7 +273,7 @@ a:hover {
 .footer-section p {
   display: flex;
   align-items: center;
-  gap: 8px; /* Espaço entre ícone e texto */
+  gap: 8px;
 }
 
 .footer-icon {
@@ -133,103 +288,4 @@ a:hover {
   padding-top: 15px;
   font-size: 14px;
   color: #aaa;
-}
-
-/* Responsividade */
-
-/* Ajustes para o menu em telas pequenas */
-@media (max-width: 768px) {
-  .menu {
-    display: none;
-    flex-direction: column;
-    gap: 15px; /* Certificando-se de que há espaço suficiente entre os itens */
-  }
-
-  .menu.open {
-    display: flex;
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    width: 200px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Ajuste para todos os itens de menu */
-  .menu a,
-  .menu button {
-    display: block;
-    padding: 12px 20px;  /* Ajuste para um padding mais uniforme */
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    text-align: center; /* Alinha o texto dentro do botão */
-    border: none;
-    background: none;
-    width: 100%; /* Garante que o botão ocupe a largura inteira */
-    transition: background-color 0.3s ease;
-  }
-
-  /* Efeito de hover nos itens do menu */
-  .menu a:hover,
-  .menu button:hover {
-    background-color: #444;
-  }
-
-  /* Adiciona uma borda aos botões para destacá-los */
-  .menu button {
-    background-color: #555;  /* Cor de fundo diferente para os botões */
-    border-radius: 5px;
-  }
-
-  .menu button:hover {
-    background-color: #777;
-  }
-
-  /* Garantir que o botão "Registro" apareça */
-  .menu button a {
-    display: block;
-    color: white;
-    text-decoration: none;
-    font-size: 18px;
-  }
-}
-
-/* Menu normal em telas maiores */
-@media (min-width: 769px) {
-  .menu {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px; /* Espaçamento entre os itens do menu */
-    width: 100%;
-  }
-
-  .menu-left {
-    display: flex;
-    gap: 30px; /* Espaçamento entre "Página Inicial", "Planos" e "Turmas" */
-  }
-
-  .menu-right {
-    display: flex;
-    flex-direction: column; /* Coloca "Registro" e "Login" um abaixo do outro */
-    gap: 10px; /* Espaço entre "Registro" e "Login" */
-  }
-
-  .hamburguer {
-    display: none; /* Esconde o hambúrguer em telas grandes */
-  }
-
-  .menu button {
-    background-color: transparent; /* Se desejar manter sem fundo */
-    border: none;
-    padding: 10px 20px;
-  }
-
-  .menu button:hover {
-    background-color: #333; /* Pode adicionar um efeito de hover para as versões maiores */
-  }
 }

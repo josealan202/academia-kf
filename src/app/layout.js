@@ -5,7 +5,7 @@ import "./globals.css";
 import Link from 'next/link';
 import { useState } from 'react';
 import { SessionProvider } from "next-auth/react";
-
+import { useRouter } from "next/navigation";
 import { signOut } from "next-auth/react";
 
 const geistSans = Geist({
@@ -20,6 +20,7 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <html lang="en">
@@ -41,16 +42,16 @@ export default function RootLayout({ children }) {
               <Link href="/planos" onClick={() => setMenuOpen(false)}>Planos</Link>
               <Link href="/turmas" onClick={() => setMenuOpen(false)}>Turmas</Link>
 
-              <button>
-                <Link href="/registro" onClick={() => setMenuOpen(false)}>Registro</Link>
+              <button className="botao1" onClick={() => { setMenuOpen(false); router.push("/registro"); }}>
+                Registro
               </button>
 
-              <button>
-                <Link href="/login" onClick={() => signOut()}>Sair</Link>
+              <button className="botao3" onClick={() => { setMenuOpen(false); router.push("/login"); }}>
+                Login
               </button>
 
-              <button>
-                <Link href="/login" onClick={() => setMenuOpen(false)}>Login</Link>
+              <button className="botao2" onClick={() => { signOut(); }}>
+                Sair
               </button>
             </div>
           </header>
