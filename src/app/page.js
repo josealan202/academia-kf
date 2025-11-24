@@ -15,7 +15,6 @@ export default () => {
             orgulhar do seu progresso.
           </p>
 
-          <button className={style.btnplanos}>Clique na aba PLANOS</button>
         </div>
         <div className={style.right}>
           <img

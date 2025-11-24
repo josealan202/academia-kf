@@ -2,7 +2,7 @@
   min-height: 100vh; 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   background-color: black;
   padding: 30px;
@@ -12,8 +12,8 @@
 
 .title {
   margin-bottom: 30px;
-  padding-bottom: 300px;
-  color: #333;
+  padding-bottom: 200px;
+  color: white;
 }
 
 .paymentOptions {
@@ -21,6 +21,7 @@
   justify-content: space-around;
   flex-wrap: wrap;
   gap: 20px;
+  
 }
 
 .paymentMethod {

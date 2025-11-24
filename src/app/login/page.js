@@ -13,17 +13,16 @@ export default function ClienteLogin() {
 
   const router = useRouter()
 
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   console.log(session)
 
 
   useEffect(() => {
-    if (session?.user) {
-      router.replace("/perfil");
-      return null;
+    if (status === "authenticated" && session?.user?.id) {
+      router.replace(`/perfil/${session.user.id}`);
     }
-  }, [session])
+  }, [status, session, router]);
 
 
   const handleLogin = async (e) => {
@@ -35,17 +34,22 @@ export default function ClienteLogin() {
         senha: senhaLog
       });
       if (res?.ok) {
-        const sessaoAtualizada = await getSession();
-        if(sessaoAtualizada?.user?.id)
-        router.push(`/perfil/${session.user.id}`);
+        const sessionAtualizada = await getSession();
+        if (sessionAtualizada?.user?.id) {
+          router.push(`/perfil/${sessionAtualizada.user.id}`);
+        } else {
+          alert("Erro ao obter dados do usuário.");
+        }
+      } else {
+        alert("Credenciais inválidas");
       }
-      
-      else alert("Email e senha inválidos");
     } catch (error) {
       console.error(error)
       alert('Erro de conexão')
     }
   }
+
+  if (status === "loading") return null;
 
 
   return (
