@@ -11,7 +11,7 @@ export default async () => {
         {
         plano.rows.map( 
             u => (
-               <Card key={u.id} titulo={u.nome} checkins={u.checkins} valor={u.valor}/>
+               <Card key={u.id} titulo={u.quantvezesnasemana} checkins={u.checkins} valor={u.valor}/>
             )
          )
         }

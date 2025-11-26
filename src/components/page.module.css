@@ -7,6 +7,30 @@
     padding: 50px;
     display: flex;
     font-size: 30px;
+    align-items: center;
+}
+
+/* AQUI ESTÃO AS CLASSES QUE FALTAVAM */
+
+.nome {
+    color: white;
+    width: 250px;
+}
+
+.checkins {
+    color: white;
+    width: 300px;
+}
+
+.valor {
+    color: white;
+    width: 300px;
+}
+
+.botao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .button {
@@ -15,5 +39,3 @@
     background-color: white; 
     border-radius: 10px;
 }
-
-

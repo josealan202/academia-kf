@@ -4,7 +4,7 @@ export default ({titulo, checkins, valor}) => (
     <>
         <div className={style.box}>
                 <div className={style.nome}> 
-                  {titulo}
+                  Quantidade de dias na semana: {titulo}
                </div>
                <div className={style.checkins}>
                     Quantidade: {checkins} check-ins
