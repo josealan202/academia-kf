@@ -102,7 +102,7 @@ export default function OnAddUser() {
             name="periododopagamento"
             value={periododopagamento}
             onChange={(e) => setPeriodoDoPagamento(e.target.value)}
-            required
+            
           >
             <option value="" disabled>Selecione as datas...</option>
             <option value="Do dia 1 a 10">Do dia 1 a 10</option>

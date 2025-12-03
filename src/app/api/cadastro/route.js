@@ -4,11 +4,11 @@ import bcrypt from "bcryptjs";
 
 export async function POST(request) {
   try {
-    const { nome, email, senha, sexo, periododopagamento, role = "cliente" } = await request.json();
+    const { nome, email, senha, sexo, periododopagamento, role = "admin" } = await request.json();
     console.log("Recebi do frontend:", nome, email, senha, sexo, periododopagamento);
 
     //validação de segurança(campos vazios)
-    if (!nome || !email || !senha || !sexo || !periododopagamento) {
+    if (!nome || !email || !senha || !sexo ) {
       return NextResponse.json({ error: "Dados inválidos" }, { status: 400 });
     }
 
@@ -28,8 +28,8 @@ export async function POST(request) {
     const senhaHash = await bcrypt.hash(senha, 12); // custo 12 é bom, como visto anteriormente
 
     await client.query(
-      "INSERT INTO usuario (nome, email, senha, sexo, periododopagamento, role) VALUES ($1, $2, $3, $4, $5, $6)",
-      [nome, email, senhaHash, sexo, periododopagamento, role]
+      "INSERT INTO usuario (nome, email, senha, sexo, role) VALUES ($1, $2, $3, $4, $5)",
+      [nome, email, senhaHash, sexo, role]
     );
     client.release();
 
