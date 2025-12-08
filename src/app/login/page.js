@@ -91,7 +91,10 @@ export default function ClienteLogin() {
               Salvar senha
             </label>
 
-            <button onClick={() => signIn("google")} className={style.btn}>
+            <br></br>
+
+            <button onClick={() => signIn("google")} className={style.googleButton}>
+              <img width="48" height="48" src="https://img.icons8.com/color/48/google-logo.png" alt="google-logo" className={style.googleIcon} />
               Continuar com o Google
             </button>
 

@@ -31,6 +31,18 @@ export default function LayoutClient({ children }) {
           <Link href="/" onClick={() => setMenuOpen(false)}>Página Inicial</Link>
           <Link href="/planos" onClick={() => setMenuOpen(false)}>Planos</Link>
           <Link href="/turmas" onClick={() => setMenuOpen(false)}>Turmas</Link>
+        
+          {status === "authenticated" && session?.user?.id && (
+            <button
+              className="botaoPerfil"
+              onClick={() => {
+                setMenuOpen(false);
+                router.push(`/perfil/${session.user.id}`);
+              }}
+            >
+            <img width="64" height="64" src="https://img.icons8.com/puffy-filled/64/FFFFFF/test-account.png" alt="test-account"/>
+            </button>
+          )}
 
           <button
             className="botao1"

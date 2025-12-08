@@ -30,7 +30,7 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   transition: transform 0.2s, box-shadow 0.2s;
-  background-color: #fafafa;
+  background-color: gray;
   cursor: pointer;
   text-align: center;
 }
@@ -49,5 +49,5 @@
 .paymentMethod p {
   margin: 0;
   font-size: 16px;
-  color: #555;
+  color: white;
 }

@@ -21,6 +21,17 @@ header {
   box-sizing: border-box;
 }
 
+.botaoPerfil {
+  background: none;
+  color: white;
+  border: none;
+  padding: 5px 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: -150px;
+  border-radius: 50px;
+}
+
 /* ----- ALTERADO: deixar o menu mais distante do logo ----- */
 header .espacamento-h1 {
   display: flex;
@@ -148,6 +159,7 @@ a:hover {
   /* Registro (azul) */
   .botao1 {
     background-color: gray;
+    margin-right: -150px;
   }
   .botao1:hover {
     background-color: gray;
@@ -156,6 +168,7 @@ a:hover {
   /* Sair (vermelho) */
   .botao2 {
     background-color: gray;
+
   }
   .botao2:hover {
     background-color: gray;
@@ -164,6 +177,7 @@ a:hover {
   /* Login (verde) */
   .botao3 {
     background-color: gray;
+
   }
   .botao3:hover {
     background-color: gray;
