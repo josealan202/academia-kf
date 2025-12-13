@@ -8,7 +8,7 @@ import pool from "@/lib/db";
 async function getUserByEmail(email) {
     const client = await pool.connect();
     const res = await client.query(
-        "SELECT id, nome, email, senha, sexo, periododopagamento, role FROM usuario WHERE email = $1",
+        "SELECT id, nome, email, senha, sexo, periododopagamento, id_turma, role FROM usuario WHERE email = $1",
         [email]
     );
     client.release();
@@ -59,6 +59,7 @@ const authOptions = {
                     token.email = existing.email;
                     token.sexo = existing.sexo;
                     token.periododopagamento = existing.periododopagamento;
+                    token.id_turma = existing.id_turma;
                 } else {
                     // Exemplo: cria como "cliente"
                     const client = await pool.connect();
@@ -95,6 +96,7 @@ const authOptions = {
                 session.user.email = token.email;
                 session.user.sexo = token.sexo;
                 session.user.periododopagamento = token.periododopagamento;
+                session.user.id_turma = token.id_turma;
             }
             return session;
         }

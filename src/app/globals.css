@@ -16,8 +16,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 15px;
-  gap: 5px;
+  padding: 10px 30px;
   box-sizing: border-box;
 }
 
@@ -25,18 +24,18 @@ header {
   background: none;
   color: white;
   border: none;
-  padding: 5px 5px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-right: -150px;
+  padding: 5px;
   border-radius: 50px;
+  cursor: pointer;
+  margin-left: 350px; /* <-- ISSO resolve */
 }
 
-/* ----- ALTERADO: deixar o menu mais distante do logo ----- */
+/* Logo + título */
 header .espacamento-h1 {
   display: flex;
   align-items: center;
-  margin-right: 40px;
+  gap: 12px;
+  margin-right: 0;
 }
 
 html,
@@ -74,7 +73,7 @@ a:hover {
 }
 
 .titulo {
-  padding-left: 20px;
+  padding-left: 0;
 }
 
 /* Botões padrão */
@@ -90,29 +89,26 @@ a:hover {
 
   .menu {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    gap: 60px;
-    width: 100%;
-    padding: 50px
+    gap: 30px;
   }
 
   .menu-left {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 12px;
   }
 
   .menu-right {
     display: flex;
     flex-direction: row;
-    gap: 20px;
     align-items: center;
   }
 
   .menu-right a,
   .menu-right button {
     font-size: 15px;
-    padding: 5px 8px;
+    padding: 5px 10px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -134,53 +130,25 @@ a:hover {
 
   /* ---------------- BOTÕES PERSONALIZADOS ---------------- */
 
-  /* estilo base */
   .botao1,
   .botao2,
   .botao3 {
     font-size: 14px;
     font-weight: 600;
-    padding: 3px 12px;
+    padding: 5px 12px;
     border-radius: 6px;
     border: none;
     cursor: pointer;
     transition: all 0.25s ease;
-    background-color: #222;
+    background-color: gray;
     color: white;
   }
 
   .botao1:hover,
   .botao2:hover,
   .botao3:hover {
-    background-color: #444;
+    background-color: #555;
     transform: translateY(-2px);
-  }
-
-  /* Registro (azul) */
-  .botao1 {
-    background-color: gray;
-    margin-right: -150px;
-  }
-  .botao1:hover {
-    background-color: gray;
-  }
-
-  /* Sair (vermelho) */
-  .botao2 {
-    background-color: gray;
-
-  }
-  .botao2:hover {
-    background-color: gray;
-  }
-
-  /* Login (verde) */
-  .botao3 {
-    background-color: gray;
-
-  }
-  .botao3:hover {
-    background-color: gray;
   }
 }
 

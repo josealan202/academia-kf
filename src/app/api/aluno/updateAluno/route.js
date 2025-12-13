@@ -1,57 +1,53 @@
-import db from "@/lib/db";  
+import { NextResponse } from "next/server";
+import db from "@/lib/db";
+import bcrypt from "bcryptjs";
+
 export async function PUT(req) {
+
   try {
-    
-    const dados = await req.json();  
+    // 1️⃣ Dados vindos do frontend
+    const { id, nome, senha, periododopagamento } = await req.json();
 
-    
-    const { nome, senha, periododopagamento, id } = dados;
-    
+    let query;
+    let values;
 
-    if (!nome || !periododopagamento) {
-      return new Response(
-        JSON.stringify({ message: "Campos obrigatórios estão faltando." }),
-        {
-          status: 400,
-          headers: { "Content-Type": "application/json" },
-        }
-      );
-    }
+    // 2️⃣ Verifica se a senha foi informada
+    if (senha && senha.trim() !== "") {
 
-    
-    const result = await db.query(
-      `
-        UPDATE paciente
-        SET 
-          nome = $1, 
-          senha = $2, 
-          periododopagamento = $3, 
+      const senhaHash = await bcrypt.hash(senha, 10);
+
+      query = `
+        UPDATE usuario
+        SET
+          nome = $1,
+          senha = $2,
+          periododopagamento = $3
         WHERE id = $4
-        RETURNING *
-      `,
-      [nome || null, senha || null, periododopagamento || null, id]
-    );
-
-    if (result.rows.length === 0) {
-      return new Response(JSON.stringify({ message: "Paciente não encontrado." }), {
-        status: 404,
-        headers: { "Content-Type": "application/json" },
-      });
+      `;
+      values = [nome, senhaHash, periododopagamento, id];
+    } else {
+      query = `
+        UPDATE usuario
+        SET
+          nome = $1,
+          periododopagamento = $2
+        WHERE id = $3
+      `;
+      values = [nome, periododopagamento, id];
     }
 
-    
-    return new Response(JSON.stringify(result.rows[0]), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
+    // 3️⃣ Executa a query
+    await db.query(query, values);
+
+    return NextResponse.json({
+      message: "Usuário atualizado com sucesso",
     });
   } catch (error) {
-    console.error("Erro ao atualizar dados do paciente:", error);
-    return new Response(
-      JSON.stringify({ message: "Erro ao atualizar dados do paciente." }),
-      {
-        status: 500,
-        headers: { "Content-Type": "application/json" },
-      }
+    console.error("Erro ao atualizar dados do usuário:", error);
+
+    return NextResponse.json(
+      { error: "Erro ao atualizar usuário" },
+      { status: 500 }
     );
   }
 }

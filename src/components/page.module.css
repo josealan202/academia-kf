@@ -39,3 +39,21 @@
     background-color: white; 
     border-radius: 10px;
 }
+
+.sucesso {
+  padding: 20px;
+  background-color: gray;
+  color: #e5e7eb;
+  border-radius: 12px;
+  text-align: center;
+
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.6;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+

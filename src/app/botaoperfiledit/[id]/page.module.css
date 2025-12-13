@@ -1,130 +1,73 @@
+/* base */
 html, body {
-  overflow: hidden;
-  height: 100vh;
   margin: 0;
+  padding: 0;
+  min-height: 100%;
 }
 
-/* Contêiner principal da página */
-.pageContainer {
-  display: flex;
-  justify-content: center; /* centraliza horizontalmente */
-  align-items: center;     /* centraliza verticalmente */
-  height: 100vh;
-  width: 100vw;
-  background-color: #1c1c1c;
-  padding: 20px;
-  box-sizing: border-box;
-  color: #fff;
-  padding-bottom: 100px;
-}
-
-/* Caixa de informações do aluno e imagem juntos */
-.profileBox {
-  background-color: gray;
-  padding: 40px 50px;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  width: 90vw;               /* ocupa grande parte da tela */
-  max-width: 1200px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 40px;
-}
-
-/* Área da imagem dentro do mesmo container */
-.profileImage {
-  height: 200px;
-  width: 200px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  flex-shrink: 0; /* não deixa a imagem encolher */
-}
-
-/* Conteúdo das infos */
-.profileContent {
-  flex: 1; /* ocupa o resto do espaço */
-}
-
-.title {
-  text-align: left;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-/* Estilo para as informações */
-.info {
-  margin-top: 20px;
-}
-
-.infoItem {
-  margin-bottom: 15px;
-}
-
-.infoItem strong {
-  display: inline-block;
-  width: 140px;
-  font-weight: 600;
-}
-
-.infoItem span {
-  font-weight: 400;
-}
-
-/* Botão para editar o perfil */
-.button {
+/* === CONTAINER DO FORM === */
+.dadoseditaveis {
+  max-width: 420px;
   width: 100%;
-  padding: 10px 0;
-  margin-top: 25px;
-  background-color: #007BFF;
+
+  margin: 80px auto; /* empurra para baixo do header */
+  padding: 32px;
+
+  background-color: #222;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* título */
+.dadoseditaveis h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+/* inputs e select */
+.input {
+  width: 100%;
+  padding: 12px 14px;
+
+  background-color: #2a2a2a;
+  color: #ffffff;
+
+  border: 1px solid #444;
+  border-radius: 6px;
+
+  font-size: 15px;
+}
+
+.input::placeholder {
+  color: #aaa;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* botão */
+.botao {
+  margin-top: 10px;
+  padding: 14px;
+
+  background-color: #007bff;
+  color: #ffffff;
+
   border: none;
-  border-radius: 5px;
-  color: white;
+  border-radius: 6px;
+
   font-size: 16px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.button:hover {
+.botao:hover {
   background-color: #0056b3;
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 900px) {
-  .pageContainer {
-    height: auto;
-    padding: 10px;
-  }
-
-  .profileBox {
-    flex-direction: column;
-    width: 100%;
-    padding: 20px;
-    gap: 20px;
-  }
-
-  .profileImage {
-    height: 150px;
-    width: 150px;
-    margin: 0 auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-  }
-
-  .title {
-    text-align: center;
-  }
-}
-
-@media (max-width: 400px) {
-  .infoItem strong {
-    display: block;
-    width: 100%;
-    margin-bottom: 5px;
-  }
-
-  .button {
-    font-size: 14px;
-    padding: 8px 0;
-  }
 }
