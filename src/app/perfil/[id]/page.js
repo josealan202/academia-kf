@@ -28,6 +28,10 @@ export default async ({ params }) => {
               <strong>Período do pagamento:</strong>
               <span>{usuario.rows[0].periododopagamento}</span>
             </div>
+            <div className={style.infoItem}>
+              <strong>Check-ins adquiridos:</strong>
+              <span>{usuario.rows[0].checkins}</span>
+            </div>
           </div>
           <EditarPerfilButton id={id} />
         </div>

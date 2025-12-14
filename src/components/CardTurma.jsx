@@ -40,7 +40,7 @@ export default function CardTurma({ id, titulo, horario, turno }) {
     });
 
     if (response.ok) {
-      setEntrou(false); // 👈 VOLTA PARA "Entrar"
+      setEntrou(false); 
     } else {
       alert("Erro ao sair da turma");
     }

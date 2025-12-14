@@ -1,0 +1,29 @@
+.container {
+  background-color: gray;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 700px;
+  max-width: 90vw;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.title {
+  margin-bottom: 25px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.frase {
+  margin-top: 10px;
+  font-size: 30px; 
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 275px; 
+  text-align: center;
+  padding: 0 20px;
+  font-weight: bold;
+}

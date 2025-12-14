@@ -13,7 +13,7 @@ export default function Pagamento() {
       </div>
 
       <div className={style.pixQRCode}>
-        {/* Aqui pode entrar um QR Code, mas vou deixar só texto */}
+        <p>Ao pagar, envie o comprovante para o Whatsapp localizado no rodapé da página.</p>
         <p>Escaneie o QR Code abaixo para pagar via PIX:</p>
         <div className={style.qrPlaceholder}>[QR Code PIX]</div>
       </div>
