@@ -10,7 +10,7 @@
   }
 }
 
-/* HEADER */
+/* ================= HEADER ================= */
 header {
   background-color: #000;
   display: flex;
@@ -27,7 +27,7 @@ header {
   padding: 5px;
   border-radius: 50px;
   cursor: pointer;
-  margin-left: 350px; /* <-- ISSO resolve */
+  margin-left: 350px; /* desktop */
 }
 
 /* Logo + título */
@@ -85,9 +85,8 @@ a:hover {
   border-radius: 10px;
 }
 
-/* ---------------------- MENU DESKTOP ---------------------- */
+/* ================= MENU DESKTOP ================= */
 @media (min-width: 769px) {
-
   .menu {
     display: flex;
     align-items: center;
@@ -129,8 +128,6 @@ a:hover {
     display: none;
   }
 
-  /* ---------------- BOTÕES PERSONALIZADOS ---------------- */
-
   .botao1,
   .botao2,
   .botao3 {
@@ -153,8 +150,20 @@ a:hover {
   }
 }
 
-/* ---------------------- MENU MOBILE ---------------------- */
+/* ================= MENU MOBILE ================= */
 @media (max-width: 768px) {
+  header {
+    padding: 10px 15px;
+  }
+
+  header h1 {
+    font-size: 18px;
+  }
+
+  header .espacamento-h1 {
+    gap: 8px;
+  }
+
   .menu {
     display: none;
     flex-direction: column;
@@ -168,10 +177,11 @@ a:hover {
     padding: 10px;
     position: absolute;
     top: 60px;
-    right: 20px;
-    width: 200px;
+    right: 15px;
+    width: 220px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 999;
   }
 
   .menu a,
@@ -208,7 +218,14 @@ a:hover {
   }
 }
 
-/* ---------------------- FOOTER ---------------------- */
+/* ================= TABLET AJUSTES ================= */
+@media (max-width: 1024px) {
+  .botaoPerfil {
+    margin-left: 0; /* neutraliza só mobile/tablet */
+  }
+}
+
+/* ================= FOOTER ================= */
 .footer {
   background-color: #111;
   color: #fff;
@@ -271,4 +288,21 @@ a:hover {
   padding-top: 15px;
   font-size: 14px;
   color: #aaa;
+}
+
+/* FOOTER MOBILE */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-section {
+    width: 100%;
+  }
+
+  .footer-section p {
+    justify-content: center;
+  }
 }

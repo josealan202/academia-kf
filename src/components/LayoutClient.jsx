@@ -45,7 +45,7 @@ export default function LayoutClient({ children }) {
                 router.push(`/perfil/${session.user.id}`);
               }}
             >
-              <Image width="64" height="64" src="/iconeperfil.png" alt="test-account" />
+              <Image width="50" height="50" src="/iconeperfil.png" alt="test-account" />
             </button>
           )}
 
