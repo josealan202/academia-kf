@@ -1,44 +1,46 @@
 .box {
-    justify-content: space-around;
-    height: 150px; 
-    background-color: #606060; 
-    margin: 100px;
-    border-radius: 10px;
-    padding: 50px;
-    display: flex;
-    font-size: 30px;
-    align-items: center;
+  justify-content: space-around;
+  height: 150px;
+  background-color: #606060;
+  margin: 100px;
+  border-radius: 10px;
+  padding: 50px;
+  display: flex;
+  font-size: 30px;
+  align-items: center;
 }
 
-/* AQUI ESTÃO AS CLASSES QUE FALTAVAM */
+/* -------- Conteúdo -------- */
 
 .nome {
-    color: white;
-    width: 250px;
+  color: white;
+  width: 250px;
 }
 
 .checkins {
-    color: white;
-    width: 300px;
+  color: white;
+  width: 300px;
 }
 
 .valor {
-    color: white;
-    width: 300px;
+  color: white;
+  width: 300px;
 }
 
 .botao {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button {
-    width: 100px; 
-    height: 35px; 
-    background-color: white; 
-    border-radius: 10px;
+  width: 100px;
+  height: 35px;
+  background-color: white;
+  border-radius: 10px;
 }
+
+/* -------- Mensagem sucesso -------- */
 
 .sucesso {
   padding: 20px;
@@ -57,3 +59,42 @@
   justify-content: center;
 }
 
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .box {
+    flex-direction: column;
+    height: auto;
+    margin: 16px;
+    padding: 20px;
+    font-size: 18px;
+    gap: 12px;
+  }
+
+  .nome,
+  .checkins,
+  .valor {
+    width: 100%;
+    text-align: center;
+  }
+
+  .button {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+
+/* ================= TABLET ================= */
+@media (max-width: 1024px) {
+  .box {
+    margin: 32px;
+    padding: 30px;
+    font-size: 22px;
+  }
+
+  .nome,
+  .checkins,
+  .valor {
+    width: auto;
+    text-align: center;
+  }
+}
