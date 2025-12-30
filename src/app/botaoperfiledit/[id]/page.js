@@ -5,7 +5,7 @@ export default async function Page({ params }) {
   const { id } = await params;
 
   const result = await db.query(
-    "SELECT id, nome, senha, periododopagamento FROM usuario WHERE id = $1",
+    "SELECT id, nome, senha FROM usuario WHERE id = $1",
     [id]
   );
 

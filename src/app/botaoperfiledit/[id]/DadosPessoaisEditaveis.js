@@ -8,8 +8,7 @@ export default function DadosPessoaisEditaveis({ dadosClientes }) {
   const [dados, setDados] = useState({
     id: dadosClientes.id,
     nome: dadosClientes.nome,
-    senha: "",
-    periododopagamento: dadosClientes.periododopagamento
+    senha: ""
   });
 
   const [houveModificacao, setHouveModificacao] = useState(false);
@@ -22,7 +21,6 @@ export default function DadosPessoaisEditaveis({ dadosClientes }) {
   useEffect(() => {
     setHouveModificacao(
       dados.nome !== dadosClientes.nome ||
-      dados.periododopagamento !== dadosClientes.periododopagamento ||
       dados.senha !== ""
     );
   }, [dados]);
@@ -63,18 +61,6 @@ export default function DadosPessoaisEditaveis({ dadosClientes }) {
         onChange={handleChange}
         placeholder="Nova senha (opcional)"
       />
-
-      <select
-        className={style.input}
-        name="periododopagamento"
-        value={dados.periododopagamento}
-        onChange={handleChange}
-      >
-        <option value="">Selecione...</option>
-        <option value="Do dia 1 a 10">Do dia 1 a 10</option>
-        <option value="Do dia 11 a 20">Do dia 11 a 20</option>
-        <option value="Do dia 21 a 30/31">Do dia 21 a 30/31</option>
-      </select>
 
       {houveModificacao && (
         <button className={style.botao} onClick={salvarDados}>

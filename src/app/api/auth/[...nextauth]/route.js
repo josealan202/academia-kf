@@ -8,7 +8,7 @@ import pool from "@/lib/db";
 async function getUserByEmail(email) {
     const client = await pool.connect();
     const res = await client.query(
-        "SELECT id, nome, email, senha, sexo, periododopagamento, id_turma, role FROM usuario WHERE email = $1",
+        "SELECT id, nome, email, senha, sexo, id_turma, role FROM usuario WHERE email = $1",
         [email]
     );
     client.release();
@@ -36,7 +36,7 @@ const authOptions = {
                 const ok = await compare(senha, user.senha);
                 if (!ok) return null;
                 // O objeto que for retornado vai para o token/session
-                return { id: user.id, name: user.nome, email: user.email, senha: user.senha, sexo: user.sexo, periododopagamento: user.periododopagamento, role: user.role };
+                return { id: user.id, name: user.nome, email: user.email, senha: user.senha, sexo: user.sexo, role: user.role };
             }
         })
     ],
@@ -58,13 +58,12 @@ const authOptions = {
                     token.name = existing.nome;
                     token.email = existing.email;
                     token.sexo = existing.sexo;
-                    token.periododopagamento = existing.periododopagamento;
                     token.id_turma = existing.id_turma;
                 } else {
                     // Exemplo: cria como "cliente"
                     const client = await pool.connect();
                     const res = await client.query(
-                        "INSERT INTO usuario (nome, email, sexo, periododopagamento, id_turma, role) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id, role",
+                        "INSERT INTO usuario (nome, email, sexo, id_turma, role) VALUES ($1, $2, $3, $4, $5) RETURNING id, role",
                         [profile.name ?? "Usuário", profile.email, "cliente"]
                     );
                     client.release();
@@ -73,7 +72,6 @@ const authOptions = {
                     token.name = res.rows[0].nome;
                     token.email = res.rows[0].email;
                     token.sexo = res.rows[0].sexo;
-                    token.periododopagamento = res.rows[0].periododopagamento;
                 }
             }
 
@@ -83,7 +81,6 @@ const authOptions = {
                 token.name = user.name;
                 token.email = user.email;
                 token.sexo = user.sexo;
-                token.periododopagamento = user.periododopagamento;
             }
             return token;
         },
@@ -95,7 +92,6 @@ const authOptions = {
                 session.user.name = token.name ?? session.user.name;
                 session.user.email = token.email;
                 session.user.sexo = token.sexo;
-                session.user.periododopagamento = token.periododopagamento;
                 session.user.id_turma = token.id_turma;
             }
             return session;

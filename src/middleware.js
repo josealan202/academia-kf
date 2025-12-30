@@ -11,7 +11,8 @@ export async function middleware(req) {
         pathname.startsWith("/planos") ||
         pathname.startsWith("/turmas") ||
         pathname.startsWith("/formadepagamento") ||
-        pathname.startsWith("/pagamentopix");
+        pathname.startsWith("/pagamentopix") ||
+        pathname.startsWith("/pagamentodinheiroemespecie");
 
     //caso seja necessário autenticação e não se tenha um token
     //então se monta uma URL de redirecionamento para a página de login e depopis
@@ -46,5 +47,6 @@ export const config = {
         "/turmas/:path*",
         "/formadepagamento/:path*",
         "/pagamentopix/:path*",
+        "/pagamentodinheiroemespecie/:path*",
     ],
 };

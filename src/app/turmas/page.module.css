@@ -1,9 +1,39 @@
+/* ===== DESKTOP (como já estava) ===== */
 .container {
-    text-align: center;
-    width: 100%;
+  text-align: center;
+  width: 100%;
 }
 
 .turma {
-    padding-top: 30px;
-    text-align: center;
+  padding-top: 30px;
+  text-align: center;
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 1024px) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px;
+  }
+
+  .turma {
+    font-size: 1.8rem;
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+  }
+
+  .turma {
+    font-size: 1.4rem;
+    padding-top: 20px;
+  }
 }

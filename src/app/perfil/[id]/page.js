@@ -25,10 +25,6 @@ export default async ({ params }) => {
               <span>{usuario.rows[0].sexo}</span>
             </div>
             <div className={style.infoItem}>
-              <strong>Período do pagamento:</strong>
-              <span>{usuario.rows[0].periododopagamento}</span>
-            </div>
-            <div className={style.infoItem}>
               <strong>Check-ins adquiridos:</strong>
               <span>{usuario.rows[0].checkins}</span>
             </div>

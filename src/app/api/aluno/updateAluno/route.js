@@ -6,7 +6,7 @@ export async function PUT(req) {
 
   try {
     // 1️⃣ Dados vindos do frontend
-    const { id, nome, senha, periododopagamento } = await req.json();
+    const { id, nome, senha } = await req.json();
 
     let query;
     let values;
@@ -20,20 +20,18 @@ export async function PUT(req) {
         UPDATE usuario
         SET
           nome = $1,
-          senha = $2,
-          periododopagamento = $3
-        WHERE id = $4
+          senha = $2
+        WHERE id = $3
       `;
-      values = [nome, senhaHash, periododopagamento, id];
+      values = [nome, senhaHash, id];
     } else {
       query = `
         UPDATE usuario
         SET
           nome = $1,
-          periododopagamento = $2
-        WHERE id = $3
+        WHERE id = $2
       `;
-      values = [nome, periododopagamento, id];
+      values = [nome, id];
     }
 
     // 3️⃣ Executa a query

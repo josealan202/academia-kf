@@ -9,13 +9,12 @@ export default function OnAddUser() {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [sexo, setSexo] = useState('')
-  const [periododopagamento, setPeriodoDoPagamento] = useState('')
 
   const route = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const user = {nome, email, senha, sexo, periododopagamento}
+    const user = {nome, email, senha, sexo}
 
     console.log(user)
     try {
@@ -93,21 +92,6 @@ export default function OnAddUser() {
             <option value="" disabled>Selecione...</option>
             <option value="Masculino">Masculino</option>
             <option value="Feminino">Feminino</option>
-          </select>
-
-          <label className={style.label} htmlFor="pagamento">Período do pagamento:</label>
-          <select
-            className={style.input} // Usando .input para o select também
-            id="periododopagamento"
-            name="periododopagamento"
-            value={periododopagamento}
-            onChange={(e) => setPeriodoDoPagamento(e.target.value)}
-            
-          >
-            <option value="" disabled>Selecione as datas...</option>
-            <option value="Do dia 1 a 10">Do dia 1 a 10</option>
-            <option value="Do dia 11 a 20"> Do dia 11 a 20</option>
-            <option value="Do dia 21 a 30/31">Do dia 21 a 30/31</option>
           </select>
 
           <button className={style.button} type="submit">Registrar</button>

@@ -1,9 +1,3 @@
-html, body {
-  overflow: hidden;
-  height: 100vh;
-  margin: 0;
-}
-
 /* Contêiner principal da página */
 .pageContainer {
   display: flex;
