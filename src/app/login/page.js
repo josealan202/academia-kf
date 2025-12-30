@@ -11,6 +11,8 @@ import Image from "next/image";
 export default function ClienteLogin() {
   const [emailLog, setEmaillog] = useState('')
   const [senhaLog, setSenhalog] = useState('')
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+
 
   const router = useRouter()
 
@@ -74,7 +76,7 @@ export default function ClienteLogin() {
             <label htmlFor="senha" className={style.label}>Senha:</label>
             <div className={style.senhaContainer}>
               <input
-                type="password"
+                type={mostrarSenha ? "text" : "password"}
                 id="senha"
                 name="senha"
                 className={style.input}
@@ -82,6 +84,7 @@ export default function ClienteLogin() {
                 onChange={(e) => setSenhalog(e.target.value)}
                 required
               />
+
             </div>
 
             <div>
@@ -89,9 +92,14 @@ export default function ClienteLogin() {
             </div>
 
             <label className={style.checkbox}>
-              <input type="checkbox" id="salvarSenha" name="salvarSenha" />
-              Salvar senha
+              <input
+                type="checkbox"
+                checked={mostrarSenha}
+                onChange={() => setMostrarSenha(!mostrarSenha)}
+              />
+              Visualizar senha
             </label>
+
 
             <br></br>
 

@@ -11,7 +11,7 @@ export default async function Turma() {
         {
         turma.rows.map( 
             u => (
-               <CardTurma key={u.id} id={u.id} titulo={u.nome} horario={u.horario} turno={u.turno}/>
+               <CardTurma key={u.id} id={u.id} titulo={u.nome} horario={u.horario}/>
             )
          )
         }
