@@ -2,7 +2,7 @@ import db from "@/lib/db";
 import CardTurma from "@/components/CardTurma";
 import style from "./page.module.css"
 
-export default async () => {
+export default async function Turma() {
     const turma = await db.query("select * from turma")
  return (<>
     <br></br>

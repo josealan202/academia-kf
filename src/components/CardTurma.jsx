@@ -20,9 +20,6 @@ export default function CardTurma({ id, titulo, horario, turno }) {
     verificarInscricao();
   }, [id]);
 
-
-
-
   const entrarNaTurma = async () => {
     const response = await fetch(`/api/turma/alunos/${id}`, {
       method: "PUT",

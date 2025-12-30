@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function LayoutClient({ children }) {
   const { data: session, status } = useSession();
@@ -44,7 +45,7 @@ export default function LayoutClient({ children }) {
                 router.push(`/perfil/${session.user.id}`);
               }}
             >
-              <img width="64" height="64" src="https://img.icons8.com/puffy-filled/64/FFFFFF/test-account.png" alt="test-account" />
+              <Image width="64" height="64" src="/iconeperfil.png" alt="test-account" />
             </button>
           )}
 

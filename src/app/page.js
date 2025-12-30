@@ -1,4 +1,5 @@
 import style from "./page.module.css";
+import Image from "next/image";
 
 export default () => {
   return (
@@ -17,7 +18,7 @@ export default () => {
 
         </div>
         <div className={style.right}>
-          <img
+          <Image
             className={style.centroimg}
             src="/kf-tcc.jpeg"
             alt="imagem treino"

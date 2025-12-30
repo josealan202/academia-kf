@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { getSession, signIn, useSession } from "next-auth/react";
 import { useEffect } from 'react'
+import Image from "next/image";
 
 
 export default function ClienteLogin() {
@@ -94,7 +95,7 @@ export default function ClienteLogin() {
             <br></br>
 
             <button onClick={() => signIn("google")} className={style.googleButton}>
-              <img width="48" height="48" src="https://img.icons8.com/color/48/google-logo.png" alt="google-logo" className={style.googleIcon} />
+              <Image width="48" height="48" src="https://img.icons8.com/color/48/google-logo.png" alt="google-logo" className={style.googleIcon} />
               Continuar com o Google
             </button>
 

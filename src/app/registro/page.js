@@ -3,6 +3,7 @@ import React from 'react';
 import style from './page.module.css';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react'
+import Image from "next/image";
 
 export default function OnAddUser() {
   const [nome, setNome] = useState('')
@@ -100,7 +101,7 @@ export default function OnAddUser() {
     </div>
 
     <div className={style.rightContainer}>
-      <img
+      <Image
         src="/ivafundo2.jpeg"
         alt="Imagem decorativa"
         className={style.signInImage}
