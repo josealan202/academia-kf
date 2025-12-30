@@ -1,7 +1,7 @@
 import style from "./page.module.css";
 import Image from "next/image";
 
-export default () => {
+export default function HomePage() {
   return (
     <div className={style.container}>
       <main className={style.content}>

@@ -4,7 +4,7 @@ import React from 'react';
 import style from './page.module.css';
 import { useRouter } from "next/navigation";
 
-export default function formaDePagamento() {
+export default function FormaDePagamento() {
 
   const router = useRouter();
 
