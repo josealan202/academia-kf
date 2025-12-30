@@ -23,7 +23,8 @@ export default function DadosPessoaisEditaveis({ dadosClientes }) {
       dados.nome !== dadosClientes.nome ||
       dados.senha !== ""
     );
-  }, [dados]);
+  }, [dados, dadosClientes.nome]);
+
 
   const salvarDados = async () => {
     const response = await fetch("/api/aluno/updateAluno", {

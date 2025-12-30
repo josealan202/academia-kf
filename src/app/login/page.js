@@ -95,7 +95,7 @@ export default function ClienteLogin() {
             <br></br>
 
             <button onClick={() => signIn("google")} className={style.googleButton}>
-              <Image width="48" height="48" src="https://img.icons8.com/color/48/google-logo.png" alt="google-logo" className={style.googleIcon} />
+              <Image width="48" height="48" src="/googlelogo.png" alt="google-logo" className={style.googleIcon} />
               Continuar com o Google
             </button>
 

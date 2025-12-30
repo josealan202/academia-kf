@@ -3,6 +3,7 @@
 import React from 'react';
 import style from './page.module.css';
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function FormaDePagamento() {
 
@@ -14,11 +15,11 @@ export default function FormaDePagamento() {
       <h1 className={style.title}>Escolha uma forma de pagamento</h1>
       <div className={style.paymentOptions}>
         <div className={style.paymentMethod} onClick={() => router.push("/pagamentopix")}>
-          <img width="50" height="50" src="https://img.icons8.com/ios/50/pix.png" alt="pix"/>
+          <Image width="50" height="50" src="/pix.png" alt="pix"/>
           <p>Pix</p>
         </div>
         <div className={style.paymentMethod} onClick={() => router.push("/pagamentodinheiroemespecie")}>
-          <img width="50" height="50" src="https://img.icons8.com/ios/50/cash-in-hand.png" alt="cash-in-hand"/>
+          <Image width="50" height="50" src="/dinheironamao.png" alt="cash-in-hand"/>
           <p>Dinheiro em espécie</p>
         </div>
       </div>
