@@ -20,7 +20,8 @@ export default function ClienteLogin() {
 
 
   useEffect(() => {
-    if (status === "authenticated" && session?.user?.id) {
+    if (status === "authenticated" && session?.user?.id &&
+      window.location.pathname === "/login") {
       router.replace(`/perfil/${session.user.id}`);
     }
   }, [status, session, router]);

@@ -4,7 +4,6 @@ import EditarPerfilButton from "./editarPerfilButton";
 
 export default async function Perfil({ params }) {
   const {id} = await params;
-  console.log("DATABASE_URL:", process.env.DATABASE_URL);
   const usuario = await db.query("SELECT * FROM usuario WHERE id = $1",
   [id]);
 
