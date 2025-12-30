@@ -20,38 +20,32 @@ export default function ClienteLogin() {
 
   console.log(session)
 
-
-  useEffect(() => {
-    if (status === "authenticated" && session?.user?.id &&
-      window.location.pathname === "/login") {
-      router.replace(`/perfil/${session.user.id}`);
-    }
-  }, [status, session, router]);
-
-
   const handleLogin = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
+
     try {
+      const callbackUrl =
+        new URLSearchParams(window.location.search).get("callbackUrl") ||
+        "/";
+
       const res = await signIn("credentials", {
         redirect: false,
         email: emailLog,
-        senha: senhaLog
+        senha: senhaLog,
+        callbackUrl,
       });
-      if (res?.ok) {
-        const sessionAtualizada = await getSession();
-        if (sessionAtualizada?.user?.id) {
-          router.push(`/perfil/${sessionAtualizada.user.id}`);
-        } else {
-          alert("Erro ao obter dados do usuário.");
-        }
+
+      if (res?.ok && res.url) {
+        router.replace(res.url);
       } else {
         alert("Credenciais inválidas");
       }
     } catch (error) {
-      console.error(error)
-      alert('Erro de conexão')
+      console.error(error);
+      alert("Erro de conexão");
     }
-  }
+  };
+
 
   if (status === "loading") return null;
 
