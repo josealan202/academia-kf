@@ -3,15 +3,20 @@ import { getToken } from "next-auth/jwt";
 
 export async function middleware(req) {
     const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
-    const { pathname } = req.nextUrl;
+    const { pathname } = req.nextUrl.pathname;
 
-    const precisaAuth =
-        pathname.startsWith("/perfil") ||
-        pathname.startsWith("/planos") ||
-        pathname.startsWith("/turmas") ||
-        pathname.startsWith("/formadepagamento") ||
-        pathname.startsWith("/pagamentopix") ||
-        pathname.startsWith("/pagamentodinheiroemespecie");
+    const protectedRoutes = [
+        "/perfil",
+        "/planos",
+        "/turmas",
+        "/formadepagamento",
+        "/pagamentopix",
+        "/pagamentodinheiroemespecie",
+    ];
+
+    const precisaAuth = protectedRoutes.some((route) =>
+        pathname === route || pathname.startsWith(`${route}/`)
+    );
 
     //caso seja necessário autenticação e não se tenha um token
     //então se monta uma URL de redirecionamento para a página de login e depopis
