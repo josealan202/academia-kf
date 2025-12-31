@@ -16,7 +16,8 @@ async function getUserByEmail(email) {
 
 export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
-
+  trustHost: true,
+  
   session: {
     strategy: "jwt",
   },
