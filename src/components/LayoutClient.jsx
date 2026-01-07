@@ -54,7 +54,7 @@ export default function LayoutClient({ children }) {
           {status === "authenticated" && session?.user?.id ? (
             <button
               className="botao2"
-              onClick={() => signOut()}
+              onClick={() => signOut({redirect:"/login"})}
             >
               Sair
             </button>

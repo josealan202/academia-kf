@@ -5,6 +5,12 @@ export async function proxy(req) {
   const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
   const { pathname } = req.nextUrl;
 
+  if (pathname.startsWith('/_next/') ||
+    pathname.startsWith('/favicon.ico') ||
+    pathname.startsWith('/api/')) {
+    return NextResponse.next();
+  }
+
   const precisaAuth =
     pathname.startsWith("/perfil") ||
     pathname.startsWith("/planos") ||
@@ -15,7 +21,6 @@ export async function proxy(req) {
 
   if (precisaAuth && !token) {
     const url = new URL("/login", req.url);
-    url.searchParams.set("callbackUrl", pathname);
     return NextResponse.redirect(url);
   }
 
