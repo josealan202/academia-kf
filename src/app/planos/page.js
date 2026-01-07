@@ -2,6 +2,8 @@ import db from "@/lib/db";
 import Card from "@/components/Card";
 import style from "./page.module.css";
 
+export const dynamic = "force-dynamic";
+
 export default async function Planos() {
   const plano = await db.query("SELECT * FROM plano");
 
