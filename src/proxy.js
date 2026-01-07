@@ -1,27 +1,17 @@
 import { NextResponse } from "next/server";
 import { getToken } from "next-auth/jwt";
 
-export async function middleware(req) {
-  const token = await getToken({
-    req,
-    secret: process.env.NEXTAUTH_SECRET,
-    secureCookie: true, // 🔥 ESSENCIAL NA VERCEL
-  });
+export async function Proxy(req) {
+  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET });
+  const { pathname } = req.nextUrl;
 
-  const pathname = req.nextUrl.pathname;
-
-  const protectedRoutes = [
-    "/perfil",
-    "/planos",
-    "/turmas",
-    "/formadepagamento",
-    "/pagamentopix",
-    "/pagamentodinheiroemespecie",
-  ];
-
-  const precisaAuth = protectedRoutes.some(
-    (route) => pathname === route || pathname.startsWith(`${route}/`)
-  );
+  const precisaAuth =
+    pathname.startsWith("/perfil") ||
+    pathname.startsWith("/planos") ||
+    pathname.startsWith("/turmas") ||
+    pathname.startsWith("/formadepagamento") ||
+    pathname.startsWith("/pagamentopix") ||
+    pathname.startsWith("/pagamentodinheiroemespecie");
 
   if (precisaAuth && !token) {
     const url = new URL("/login", req.url);
