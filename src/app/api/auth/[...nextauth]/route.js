@@ -43,7 +43,6 @@ export const authOptions = {
         const ok = await compare(senha, user.senha);
         if (!ok) return null;
 
-        // ❌ NUNCA retornar senha
         return {
           id: user.id,
           name: user.nome,
