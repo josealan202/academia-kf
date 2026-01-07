@@ -3,6 +3,7 @@ import style from "./page.module.css";
 
 export default function Pagamento() {
   const chavePix = "123e4567-e89b-12d3-a456-426614174000";
+  console.log(process.env.POSTGRES_URL);
 
   return (
     <div className={style.container}>
